@@ -1,19 +1,17 @@
-Repository: ICJM_Precision_Medicine
-
-****
-
 # Title: Personalized Biopsy Schedules Using an Interval-censored Cause-specific Joint Model
-## Author: Zhenwei Yang 
-## Affiliation: Department of Biostatistics, Erasmus Medical Center
-## DOI: 10.48550/ARXIV.2209.00105
+
+**Author**: Zhenwei Yang 
+**Affiliation**: Department of Biostatistics, Erasmus Medical Center
+**DOI**: 10.48550/ARXIV.2209.00105
 
 ****
 
 ## Content
 
-* [ICJM Personalized schedules.Rproj]
+* ICJM Precision Medicine.Rproj
 * [Rscript](#Rscript)
 * [Output](#Output)
+* [img](#Visualized example)
 
 ****
 
@@ -22,10 +20,11 @@ Repository: ICJM_Precision_Medicine
 * Data analysis
 
 |File name| Description|
-|ICJM1_inits| initials of the coefficients in the longitudinal part of ICJM1 (only include PSA)
-|ICJM1.R | fit the ICJM1 on the Canary PASS data
-|ICJM2_inits | initials of the coefficients in the longitudinal part of ICJM2 (PSA + core ratio)
-|ICJM2_inits_prepare.R | fit the longitudinal part of ICJM2 on the PASS data and extract the coefficients as the inits
+|:----------:|:--------------|
+|ICJM1_inits| initials of the coefficients in the longitudinal part of ICJM1 (only include PSA)|
+|ICJM1.R | fit the ICJM1 on the Canary PASS data|
+|ICJM2_inits | initials of the coefficients in the longitudinal part of ICJM2 (PSA + core ratio)|
+|ICJM2_inits_prepare.R | fit the longitudinal part of ICJM2 on the PASS data and extract the coefficients as the inits|
 |ICJM2.R | fit the ICJM2 on the Canary PASS data
 
 * Data preprocessing
@@ -79,3 +78,44 @@ Repository: ICJM_Precision_Medicine
 |File name| Description|
 |Main text | all figures used in the manuscripts
 |Supplementary| all figures used in the supplementary materials
+
+### Package dependencies
+
+- rajgs
+- mcmcplots
+- GLMMadaptive
+- ggplot2
+- tidyverse
+- splines
+- future
+- mcmcse
+- mvtnorm
+- JMbayes2
+- JMbayes
+- MASS
+- doParallel
+- truncnorm
+- Matrix
+- latex2exp
+- cowplot
+
+> [!Note]
+> - Please make sure to install above-mentioned packages by install.packages() before running the R code
+
+### Visualized example
+
+- Previous biopsy: year 0.5; current time: year 1.5:
+
+![](https://github.com/ZhenweiYang96/ICJM_Precision_Medicine/blob/main/img/Schedule_1.5.png)
+
+- Previous biopsy: year 0.5; current time: year 2:
+
+![](https://github.com/ZhenweiYang96/ICJM_Precision_Medicine/blob/main/img/Schedule_2.png)
+
+- Previous biopsy: year 0.5; current time: year 2.5:
+
+![](https://github.com/ZhenweiYang96/ICJM_Precision_Medicine/blob/main/img/Schedule_2.5.png)
+
+- Previous biopsy: year 2.5; current time: year 3:
+
+![](https://github.com/ZhenweiYang96/ICJM_Precision_Medicine/blob/main/img/Schedule_3.png)
