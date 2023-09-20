@@ -110,7 +110,7 @@
 > [!Note]
 > - Please make sure to install above-mentioned packages by `install.packages()` before running the R code
 
-### Visualized example (#Visualized_example)
+### Visualized example
 
 - Previous biopsy: year 0.5; current time: year 1.5:
 
