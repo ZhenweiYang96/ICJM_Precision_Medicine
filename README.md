@@ -13,7 +13,7 @@
 * ICJM Precision Medicine.Rproj
 * [Rscript](#Rscript)
 * [Output](#Output)
-* [img](#`Visualized example`)
+* [img](#Visualized_example)
 
 ****
 
@@ -108,9 +108,9 @@
 - cowplot
 
 > [!Note]
-> - Please make sure to install above-mentioned packages by install.packages() before running the R code
+> - Please make sure to install above-mentioned packages by `install.packages()` before running the R code
 
-### Visualized example
+### Visualized example (#Visualized_example)
 
 - Previous biopsy: year 0.5; current time: year 1.5:
 
