@@ -5,6 +5,7 @@ library(rjags)
 load("Cleaned data/pass_id.RData")
 load("Cleaned data/pass.RData")
 load("Cleaned data/pass_cores.RData")
+load("R script/Data analysis/ICJM2_inits/MCMC_mvmm.RData")
 
 # Figure S1 ---------------------------------------------------------------
 set.seed(2021)
@@ -39,6 +40,7 @@ s1.2 <- pass.cores %>%
         panel.grid.minor = element_blank(),
         panel.background = element_blank(),
         text = element_text(size=16)) + 
+  scale_x_continuous(breaks = seq(0,9,3))+
   ylab("Core ratio (%)") + 
   xlab("Time (years)")
 s1.2
@@ -105,10 +107,10 @@ load("Output/Tables & figures/Supplementary/truebh.RData")
 load("Output/Tables & figures/Supplementary/estbh.RData")
 
 plot <- ggplot() + 
-  geom_line(aes(x = est.bhzard$time, y = est.bhzard$risk, group = est.bhzard$dataset), alpha = 0.5, size = 1) + 
-  geom_line(aes(x = true.bhzard$time, y = true.bhzard$risk), color = "red", size = 1.5) + 
+  geom_line(aes(x = est.bhzard$time, y = est.bhzard$risk, group = est.bhzard$dataset), alpha = 0.5, linewidth = 1) + 
+  geom_line(aes(x = true.bhzard$time, y = true.bhzard$risk), color = "red", linewidth = 1.5) + 
   ylab("log(baseline hazard)") + 
-  xlab("Time (year)") + 
+  xlab("Time (years)") + 
   theme_bw()+ 
   theme(text = element_text(size=20))
 plot
@@ -116,7 +118,7 @@ plot
 ggsave(plot, file = "Output/Tables & figures/Supplementary/FigureS3_baseline_hazard.png")
 
 
-# Figure 4 fitness of the mixed model -------------------------------------
+# Figure S4 fitness of the mixed model -------------------------------------
 load("R script/Data analysis/ICJM2_inits/MCMC_mvmm.RData")
 load("Output/Data analysis/ICJM2.RData")
 n_sample <- dim(mcmc.mvmm[[1]])[1] * 3
@@ -210,8 +212,9 @@ s5.1 <- mvmm.fit.psa %>%
         #panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
         panel.background = element_blank(),
-        text = element_text(size=16)) + 
+        text = element_text(size=16)) +
   ylab(expression(log[2](PSA + 1))) + 
+  scale_x_continuous(breaks = seq(0,7.5,2.5)) +
   xlab("Time (years)")
 s5.1
 ggsave("Output/Tables & figures/Supplementary/FigureS4_1_fittness_of_PSA.png",
