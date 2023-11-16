@@ -11,7 +11,7 @@ load("Cleaned data/pass_cores.RData")
 
 # Figure 2  --------------------------------------------------------------------
 load("Output/Data analysis/ICJM1.RData")
-source("R script/Functions/dynpred_Risk prediction function.R")
+source("R script/Functions/[notrt]dynpred_Risk prediction function.R")
 source("R script/Functions/function.R")
 source("R script/Functions/screening schedule planning function.R")
 
@@ -51,8 +51,8 @@ plot.loss <- ggplot() +
   geom_label(aes(x = 5.1, y = 1.5, label = "Maximum clinically acceptable delay"), color = "orange", size = 7, fontface = "bold") + # , family = "CMU Serif"
   geom_label(aes(x = 7.3, y = 0.7, label = "\u03D5 = 0%"), size = 6, fill ="black", color= "white") + #\u03BA # , family = "Arial"
   geom_label(aes(x = 1.9, y = 4.55, label = "\u03D5 = 100%"), size = 6, fill = "gray", color= "white") + # , family = "Arial"
-  geom_label(aes(x = 1.7, y = 0.75, label = "\u03D5* = 14%"), size = 6, fill = "red", color ="white") + # , family = "Arial"
-  scale_x_continuous(breaks = seq(1,9,1)) + 
+  geom_label(aes(x = 1.7, y = 0.75, label = "\u03D5* = 15%"), size = 6, fill = "red", color ="white") + # , family = "Arial"
+  scale_x_continuous(breaks = seq(1,9,1)) +  
   ylab("Expected detection delay (years)") + 
   xlab("Expected number of biopsies") + 
   theme_bw() + 
@@ -229,7 +229,7 @@ boxplot.num.all <- comparison %>%
   rbind(gather(comparison.nonpro, Schedule_type, num_biopsies, num_biopsy_flexible:`num_biopsy_fixed_2`)) %>% 
   ggplot(aes(x = Schedule_type, y = num_biopsies, color = as.factor(patients))) +
   stat_boxplot(geom = "errorbar") +  
-  geom_boxplot() +
+  geom_boxplot(outlier.shape = NA) +
   xlab("Schedule type") +
   ylab("Number of biopsies conducted") + 
   theme_bw() +
@@ -267,9 +267,10 @@ boxplot.delay.all <- comparison %>%
   gather(Schedule_type, delay, detection_delay_flexible:`detection_delay_fixed_2`) %>% 
   ggplot(aes(x = Schedule_type, y = delay)) +
   stat_boxplot(geom = "errorbar", width = 0.5) +  
-  geom_boxplot() +
+  geom_boxplot(outlier.shape = NA) +
   xlab("Schedule type") +
   ylab("Detection delay (year)") + 
+  ylim(0,4)+
   theme_bw() +
   theme(text = element_text(size=  18),
         panel.border = element_rect(color = "black", size = 1, fill= NA)) + 
@@ -278,9 +279,9 @@ boxplot.delay.all
 ggsave(boxplot.delay.all, file = "Output/Tables & figures/Main text/Figure5b_detection_delay (progressing).png")
 
 # PROGRESSION - detection delay - number
-median(comparison$detection_delay_flexible, na.rm = TRUE)
-median(comparison$detection_delay_fixed_1[!is.na(comparison$detection_delay_fixed_1)])
-median(comparison$detection_delay_fixed_2[!is.na(comparison$detection_delay_fixed_2)])
+round(median(comparison$detection_delay_flexible, na.rm = TRUE), 2)
+round(median(comparison$detection_delay_fixed_1[!is.na(comparison$detection_delay_fixed_1)]), 2)
+round(median(comparison$detection_delay_fixed_2[!is.na(comparison$detection_delay_fixed_2)]), 2)
 
 
 

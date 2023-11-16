@@ -40,7 +40,8 @@
 
 |File name| Description|
 |:----------:|:--------------|
-|dynpred_Risk prediction function.R | a function to predict patient-specific risk of cancer progression based on the dynamic PSA|
+|[notrt]dynpred_Risk prediction function.R| the function used in scheduling to predict patient-specific risk of cancer progression based on the dynamic PSA, refer to Equation (6)
+|dynpred_Risk prediction function.R | the function used in evaluation to predict patient-specific risk of cancer progression based on the dynamic PSA right after biopsies being done, refer to Equation (8)|
 |Final personalized schedule evaluation function.R | a function to evaluate the personalized scheduling in the simulation study|
 |function.R | help and auxiliary functions|
 |ICCSJoint model function JAGS.R | a function to fit the ICJM|

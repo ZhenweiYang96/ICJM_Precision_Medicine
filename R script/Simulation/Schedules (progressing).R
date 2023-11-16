@@ -6,7 +6,7 @@ schedule_seed_pro <- matrix(sample(1:1000000, 1000 * 100), 1000, 100)
 save(schedule_seed_pro, file = "R script/Simulation/seed/schedule generating seed (progressing patients).RData")
 
 source("R script/Functions/screening schedule planning function.R")
-source("R script/Functions/dynpred_Risk prediction function.R")
+source("R script/Functions/[notrt]dynpred_Risk prediction function.R")
 source("R script/Functions/function.R")
 source("R script/Functions/Final personalized schedule evaluation function.R")
 
